@@ -273,9 +273,12 @@
     position: relative;
     width: min(100%, 300px);
     aspect-ratio: 1320 / 2868;
-    border-radius: 15%/7%;
-    padding: 3.4%;
-    background: linear-gradient(160deg, color-mix(in srgb, var(--ink) 55%, var(--surface)), color-mix(in srgb, var(--ink) 30%, var(--surface)));
+    border-radius: 9%/4.2%;
+    /* A real iPhone's bezel is a hairline, not a case — this was reading as a
+       thick pale ring against the dark ground, so the band is thin here and
+       toned close to the surface colour rather than a light contrasting grey. */
+    padding: 1.1%;
+    background: linear-gradient(165deg, color-mix(in srgb, var(--ink) 32%, var(--surface)), color-mix(in srgb, var(--ink) 20%, var(--surface)));
     box-shadow:
       16px 22px 40px color-mix(in srgb, var(--shadow) 90%, black 10%),
       -8px -8px 20px var(--highlight);
@@ -285,18 +288,26 @@
     position: absolute;
     inset: 0;
     border-radius: inherit;
-    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--highlight) 70%, transparent);
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--highlight) 55%, transparent);
     pointer-events: none;
   }
   .phone img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 12%/5.6%;
+    border-radius: 8%/3.7%;
   }
   .phone.small { width: min(100%, 220px); }
   .phone.tilt-l { transform: rotate(-3deg); }
   .phone.tilt-r { transform: rotate(3deg); }
+
+  /* The composer and burn-release screenshots were captured on iPad (2064x2752),
+     a much squarer shape than iPhone (1320x2868). Forced into the phone frame's
+     aspect ratio, object-fit: cover cropped most of their content away — the
+     composer especially, since its controls sit top-left rather than centred.
+     This variant matches the frame's proportions to the source instead, so
+     nothing gets cut off. */
+  .phone.tablet-shot { aspect-ratio: 2064 / 2752; width: min(100%, 340px); }
 
   /* ---------- duo (keep / burn) ---------- */
   .duo {
@@ -559,7 +570,7 @@
 
     <div class="spotlight">
       <div class="spotlight-art phone-slot">
-        <div class="phone tilt-l"><img src="images/compose.png" alt="The entry composer, showing mood selection, a photo attached, and a dictation option"></div>
+        <div class="phone tablet-shot tilt-l"><img src="images/compose.png" alt="The entry composer, showing mood selection, a photo attached, and a dictation option"></div>
       </div>
       <div class="spotlight-copy">
         <p class="eyebrow">Writing</p>
@@ -593,7 +604,7 @@
 
     <div class="spotlight" style="margin-top:88px;">
       <div class="spotlight-art phone-slot">
-        <div class="phone"><img src="images/released.png" alt="A screen shown after burning an entry, reading: It's gone. And so is the weight of carrying it."></div>
+        <div class="phone tablet-shot"><img src="images/released.png" alt="A screen shown after burning an entry, reading: It's gone. And so is the weight of carrying it."></div>
       </div>
       <div class="spotlight-copy">
         <p class="eyebrow">The burn ritual</p>
